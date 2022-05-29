@@ -1,0 +1,25 @@
+{
+  "name": "php-package-ip-address",
+  "version": "1.0.0",
+  "description": "PHP Package for handling IP Addresses",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.11.2",
+    "prettier": "^1.18.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cabloo/php-package-ip-address.git"
+  },
+  "keywords": [
+    "IP Address",
+    "IP"
+  ],
+  "author": "Zane Hooper <zanehoop@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/cabloo/php-package-ip-address"
+}
