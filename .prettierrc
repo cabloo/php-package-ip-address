@@ -1,5 +1,5 @@
 {
-"trailingCommaPHP": "all",
-"braceStyle": "1tbs",
-"tabWidth": 2
+  "trailingCommaPHP": "all",
+  "braceStyle": "1tbs",
+  "tabWidth": 2
 }
