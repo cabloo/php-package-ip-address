@@ -31,12 +31,19 @@ class IpAddressV4Test extends TestCase {
   }
 
   /** @test */
-  public function testRange(): void {
+  public function testRangeInterface(): void {
     $ip = new IpAddressV4('127.0.0.1');
     $this->assertInstanceOf(IIpAddressRange::class, $ip);
     $this->assertInstanceOf(IIpAddress::class, $ip);
     $this->assertEquals($ip, $ip->start());
     $this->assertEquals($ip, $ip->end());
+  }
+
+  /** @test */
+  public function testRange(): void {
+    $range = IpAddressV4::range('1.0.0.1', '2.0.0.1');
+    $this->assertEquals('1.0.0.1', (string) $range->start());
+    $this->assertEquals('2.0.0.1', (string) $range->end());
   }
 
   /** @test */
