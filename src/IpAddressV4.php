@@ -27,10 +27,6 @@ class IpAddressV4 implements IIpAddress {
    * @throws PartialIpAddress
    */
   final public function __construct(string $input) {
-    if (!$input) {
-      return;
-    }
-
     if (preg_match(static::ILLEGAL_CHARACTER_REGEX, $input)) {
       throw new InvalidIpAddress($input, 'contains illegal characters');
     }
@@ -50,7 +46,7 @@ class IpAddressV4 implements IIpAddress {
       );
     }
 
-    if (!$this->hasMinPartCount()) {
+    if (count($this->parts()) < static::MIN_PART_COUNT) {
       throw new PartialIpAddress($input, $this);
     }
   }
@@ -82,10 +78,6 @@ class IpAddressV4 implements IIpAddress {
 
       return $asInt;
     }, explode($this->delim(), $address));
-  }
-
-  private function hasMinPartCount(): bool {
-    return count($this->parts()) >= static::MIN_PART_COUNT;
   }
 
   /** @return string[] */
@@ -164,6 +156,10 @@ class IpAddressV4 implements IIpAddress {
   }
 
   public function correctToPreferredFormat(string $address): string {
+    if ($address === '') {
+      return '';
+    }
+
     $addr = ltrim($address, '0');
     $addr = str_replace('.0', '.', $addr);
     $addr = str_replace('.0', '.', $addr);

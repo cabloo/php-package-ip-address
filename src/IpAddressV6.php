@@ -40,16 +40,12 @@ class IpAddressV6 implements IIpAddress {
   private $parts = [];
 
   /**
-   * Initialize an IP Address.
-   *
-   * @param string|null $input
-   *
    * @throws InvalidIpAddress
    * @throws PartialIpAddress
    */
-  final public function __construct($input = null) {
-    if (!$input) {
-      return;
+  final public function __construct(?string $input) {
+    if ($input === '') {
+      throw new InvalidIpAddress($input, 'empty string');
     }
 
     if (preg_match(static::ILLEGAL_CHARACTER_REGEX, $input)) {
@@ -186,13 +182,11 @@ class IpAddressV6 implements IIpAddress {
   }
 
   private function correctToPreferredFormat(string $address): string {
-    $delim = $this->delim();
-
-    // This shouldn't be possible but when it happens,
-    // it breaks everything because it's inside __toString.
     if ($address === "") {
       return "";
     }
+
+    $delim = $this->delim();
 
     if ($address[0] === $delim && $address[1] !== $delim) {
       $address = $delim . $address;

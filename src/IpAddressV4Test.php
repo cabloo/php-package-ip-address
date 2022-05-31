@@ -105,6 +105,10 @@ class IpAddressV4Test extends TestCase {
         'input' => '001.000000.00220.202',
         'output' => '1.0.220.202',
       ],
+      'empty string' => [
+        'input' => '',
+        'output' => 'Invalid IP Address:  (partial)',
+      ],
       'over max' => [
         'input' => '1.256.0.0',
         'output' =>

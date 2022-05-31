@@ -87,6 +87,10 @@ class IpAddressV6Test extends TestCase {
   public static function dataInAndOut() {
     return [
       'valid IP' => ['input' => '::1', 'output' => '::1'],
+      'empty string' => [
+        'input' => '',
+        'output' => 'Invalid IP Address:  (empty string)',
+      ],
       'a-f letters work (lower and uppercase), uppercase gets converted to lower' => [
         'input' => '::afAF',
         'output' => '::afaf',
