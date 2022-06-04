@@ -23,10 +23,7 @@ class IpAddressRange implements IIpAddressRange {
    * @param IIpAddress $start
    * @param IIpAddress $end
    */
-  public function __construct(
-    IIpAddress $start,
-    IIpAddress $end
-  ) {
+  public function __construct(IIpAddress $start, IIpAddress $end) {
     $this->end = $end;
     $this->start = $start;
 
@@ -56,7 +53,7 @@ class IpAddressRange implements IIpAddressRange {
    *
    * @return string
    */
-  public function __toString() {
+  public function __toString(): string {
     if ((string) $this->start === (string) $this->end) {
       return (string) $this->start;
     }
